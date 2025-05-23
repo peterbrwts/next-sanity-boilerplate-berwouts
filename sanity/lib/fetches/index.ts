@@ -4,6 +4,7 @@ import { sanityFetch } from './utils/sanity-fetch';
 
 import { Settings } from '@/types/singletons/settings';
 import { Page } from '@/types/documents/page';
+import { ContentPage } from '@/types/documents/contentPage';
 import { HomePage } from '@/types/singletons/home-page';
 import { CaseStudy } from '@/types/documents/case-study';
 import { Post, PostCategory } from '@/types/documents/post';
@@ -16,6 +17,7 @@ import { contactPageQuery } from '../queries/singletons/pages/contact-page-query
 import { privacyPageQuery } from '../queries/singletons/pages/privacy-page-query';
 import { termsPageQuery } from '../queries/singletons/pages/terms-page-query';
 import { allPostsQuery } from '../queries/documents/posts/all-posts-query';
+import { contentPageQuery } from '../queries/documents/contentPages';
 import { latestPostsQuery } from '../queries/documents/posts/latest-posts-query';
 import { postBySlugQuery } from '../queries/documents/posts/posts-by-slug-query';
 import { allPostCategoriesQuery } from '../queries/documents/posts/all-post-categories-query';
@@ -28,6 +30,13 @@ export async function fetchSettings() {
   return sanityFetch<Settings>({
     query: settingsQuery,
     tags: ['settings']
+  })
+}
+
+export async function fetchContentPage() {
+  return sanityFetch<ContentPage>({
+    query: contentPageQuery,
+    tags: ['contentpage']
   })
 }
 

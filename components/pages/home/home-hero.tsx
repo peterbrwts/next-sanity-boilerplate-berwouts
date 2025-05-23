@@ -1,48 +1,49 @@
-import Image from 'next/image'
-import Button from '@/components/shared/button'
-import Container from '@/components/global/container'
+import Image from "next/image";
+import Button from "@/components/shared/button";
 
-export default function HomeHero({ ...props }: {
-  heading: string
-  paragraph: string
-  image: string
-  btnText: string
-  btnDestination: string
+export default function HomeHero({
+  heading,
+  paragraph,
+  image,
+  btnText,
+  btnDestination,
+}: {
+  heading: string;
+  paragraph: string;
+  image: string;
+  btnText: string;
+  btnDestination: string;
 }) {
-
-  const { heading, paragraph, image, btnText, btnDestination } = props
-
   return (
-    <section className='pt-8 md:pt-24'>
-      <Container>
-        <div className='flex flex-col-reverse md:flex-row justify-between'>
-          <div className='flex flex-col items-start'>
-            <h1 className='w-full max-w-[60rem] -ml-1 md:-ml-2 text-[14vw] lg:text-[10vw] font-light tracking-tighter leading-none'>
-              {heading}
-            </h1>
-            <p className='max-w-lg mt-6 md:mt-8 mb-8 md:mb-12 text-lg md:text-2xl font-light tracking-tight'>
-              {paragraph}
-            </p>
-            <Button
-              href={btnDestination}
-              variant="default"
-              size="default"
-            >
-              {btnText}
-            </Button>
-          </div>
-          <div>
-            <Image 
-              src={image}
-              width={250}
-              height={350}
-              sizes="(max-width: 640px) 100px"
-              alt='Image of Brooke'
-              className='w-20 md:w-40 lg:w-48 mb-10 md:mb-0 mt-10 md:mt-20 object-contain'
-            />
-          </div>
-        </div>
-      </Container>
+    <section className="relative w-full h-screen overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src={image}
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          priority
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative h-full flex flex-col justify-center items-center text-center px-6">
+        <h1 className="text-white text-[10vw] lg:text-[8vw] font-bold tracking-tight leading-none drop-shadow-lg">
+          {heading}
+        </h1>
+        <p className="mt-4 text-white text-lg md:text-2xl font-light max-w-3xl drop-shadow-md">
+          {paragraph}
+        </p>
+        <Button
+          href={btnDestination}
+          variant="default"
+          size="lg"
+          className="mt-8"
+        >
+          {btnText}
+        </Button>
+      </div>
     </section>
-  )
+  );
 }

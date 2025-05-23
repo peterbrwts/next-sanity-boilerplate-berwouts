@@ -4,6 +4,9 @@ import postCategory from "./documents/post-category";
 import author from "./documents/author";
 import menuItem from "./documents/menu-item";
 import caseStudy from "./documents/case-study";
+import page from "./documents/page";
+import contentPage from "./contentPage"; // Import het nieuwe schema
+
 
 const coreSchema = [
   settings,
@@ -12,6 +15,7 @@ const coreSchema = [
   author,
   menuItem,
   caseStudy,
+  contentPage
 ]
 
 // pages schema 
